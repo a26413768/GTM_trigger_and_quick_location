@@ -9,7 +9,6 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 from datetime import datetime
 from datetime import timedelta
-from astropy.io import fits
 import os
 
 def fit_BG(x,y,test_x):
@@ -27,7 +26,7 @@ def fit_BG(x,y,test_x):
     return predictions
 
 filename = "sample"  # the level 1 file name 
-filename_sc =  "sample-sc" 
+filename_sc =  "sample_sc" 
 min_hits_intervel = 2e-6
 Bin_size_array = [0.001, 0.002, 0.005 ,0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5]
 number_of_detector = 8
