@@ -44,7 +44,7 @@ print('================================ END of Date Read =======================
 df_time = pd.read_csv("./input/" + filename + '.csv', nrows=1)
 start_time_UTC_str = df_time.columns[1]
 print(start_time_UTC_str)
-start_time_obj = datetime.strptime(start_time_UTC_str, '%m_%d_%Y_%H_%M_%S_%f')
+start_time_obj = datetime.strptime(start_time_UTC_str, '%m_%d_%Y_%H_%M_%S.%f')
 print('start_time: ' + str(start_time_obj))
 
 
