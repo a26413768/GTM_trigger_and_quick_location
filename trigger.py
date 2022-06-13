@@ -292,7 +292,7 @@ else:  #if trigger
     ECIy = df2['ECIy'][trigger_mid_time_index]
     ECIz = df2['ECIz'][trigger_mid_time_index]
 
-    result = np.array([datetime.strftime(trigger_time_UTC,'%m_%d_%Y_%H_%M_%S_%f'),
+    result = np.array([datetime.strftime(trigger_time_UTC,'%m_%d_%Y_%H_%M_%S.%f'),
                         Min_trigger_bin,
                         round(T50,3),
                         round(T90,3),
