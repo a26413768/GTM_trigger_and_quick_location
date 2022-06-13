@@ -9,6 +9,8 @@ from skyfield.api import Distance, load, wgs84
 from skyfield.positionlib import Geocentric
 from datetime import datetime
 from astropy.time import Time
+import os
+
 
 def unit_vector(vector):
     # Returns the unit vector of the vector. 
@@ -51,8 +53,11 @@ table1 = np.array(pd.read_csv("./table/" + "big_typical1_response_20220120.csv")
 table2 = np.array(pd.read_csv("./table/" + "big_typical2_response_20220120.csv")) #file name of hard energy big table
 table3 = np.array(pd.read_csv("./table/" + "big_typical3_response_20220120.csv")) #file name of soft energy big table
 
-filename = "result_02_21_2022_13_56_43_587821,S849.00,ES859.00,XS0.07,YS-0.75,ZS-0.66,PS-41.43,TS84.44"
+filename = "result_sample"
 trigger_data = pd.read_csv("./output/" + filename + ".csv")
+
+if not os.path.exists("./location_output/"):
+    os.makedirs("./location_output/")
 
 bkg_count = np.array(trigger_data.loc[0,['NN_BG_count','NP_BG_count','NT_BG_count','NB_BG_count','PN_BG_count','PP_BG_count','PT_BG_count','PB_BG_count']])
 print(bkg_count)
@@ -112,7 +117,7 @@ print("location_RA_Dec: " + str((location_RA,location_Dec)))
 
 #================== position of earth and sun and milkyway =================
 # earth horizon
-start_time_obj = datetime.strptime(trigger_data['trigger_time_UTC'][0], '%m_%d_%Y_%H_%M_%S_%f')
+start_time_obj = datetime.strptime(trigger_data['Trigger_time_UTC'][0], '%m_%d_%Y_%H_%M_%S.%f')
 UTC = [start_time_obj.year, start_time_obj.month, start_time_obj.day, start_time_obj.hour, start_time_obj.minute, start_time_obj.second]
 ts = load.timescale()
 t = ts.utc(UTC[0],UTC[1],UTC[2],UTC[3],UTC[4],UTC[5])
